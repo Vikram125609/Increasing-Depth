@@ -9,6 +9,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   }> = await axios.post(`https://c2cjobs.org/api/v1/jobseeker/list-all-jobs`, {
     id: params.id,
   });
+  
   return (
     <Layout>
       {data.data.data?.adminJobs.map((jobs) => {
