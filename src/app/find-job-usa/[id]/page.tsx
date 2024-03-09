@@ -4,7 +4,7 @@ import Layout from "./layout";
 import { adminJobs } from ".";
 
 import { getItem } from "@/app/utils";
-export const revalidate = 36000000;
+export const revalidate = 3600;
 
 import axios, { AxiosResponse } from "axios";
 export default async function Page({ params }: { params: { id: string } }) {
@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   });
 
   const time = await getItem(params.id);
-
+  console.log('data2',time);
   return (
     <Layout>
       {data.data.data?.adminJobs.map((job) => {
