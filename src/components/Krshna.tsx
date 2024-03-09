@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useRecoilState } from "recoil";
 import Krshnainternal from "./Krshnainternal";
+import { krshnaCounter } from "@/utils/atom";
 
 export default function Krshna() {
-  const [count, setCount] = useState(1);
+  const [krshnaCount, setKrshnaCount] = useRecoilState(krshnaCounter);
   return (
     <div>
       <h1>This is Krshna</h1>
-      <button onClick={() => setCount(count + 1)}>Update State</button>
-      <Krshnainternal count={count} />
+      <button onClick={() => setKrshnaCount(krshnaCount + 1)}>Update State</button>
+      <Krshnainternal />
     </div>
   );
 }

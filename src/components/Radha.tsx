@@ -1,13 +1,14 @@
-import { useState } from "react";
 import Radhainternal from "./Radhainternal";
+import { useRecoilState } from "recoil";
+import { radhaCounter } from "@/utils/atom";
 
 export default function Radha() {
-  const [count, setCount] = useState(1);
+  const [radhaCount, setRadhaCount] = useRecoilState(radhaCounter);
   return (
     <div>
       <h1>This is Radha</h1>
-      <button onClick={() => setCount(count + 1)}>Update State</button>
-      <Radhainternal count={count} />
+      <button onClick={() => setRadhaCount(radhaCount + 1)}>Update State</button>
+      <Radhainternal />
     </div>
   );
 }

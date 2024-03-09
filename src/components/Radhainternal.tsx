@@ -1,3 +1,12 @@
-export default function Radhainternal({ count }: { count: number }) {
-  return <h1>This is Radhainteral and the count is via props and the count is {count}</h1>;
+import { radhaCounter } from "@/utils/atom";
+import { useRecoilValue } from "recoil";
+
+export default function Radhainternal() {
+  const radhaCount = useRecoilValue(radhaCounter);
+  return (
+    <h1>
+      This is Radhainteral and the count is via props and the count is{" "}
+      {radhaCount}
+    </h1>
+  );
 }
