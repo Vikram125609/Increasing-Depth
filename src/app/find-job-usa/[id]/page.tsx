@@ -4,6 +4,7 @@ import Layout from "./layout";
 import { adminJobs } from ".";
 
 import axios, { AxiosResponse } from "axios";
+import Pagination from "@/components/Pagination";
 export default async function Page({ params }: { params: { id: string } }) {
   const data: AxiosResponse<{
     code: number;
@@ -18,11 +19,12 @@ export default async function Page({ params }: { params: { id: string } }) {
         return (
           <div key={job._id}>
             <Link href={`/job/${job.id}`} passHref>
-                <h1>{job.job_title}</h1>
+              <h1>{job.job_title}</h1>
             </Link>
           </div>
         );
       })}
+      <Pagination page={params.id}  />
     </Layout>
   );
 }
