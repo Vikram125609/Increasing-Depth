@@ -3,9 +3,6 @@ import Link from "next/link";
 import Layout from "./layout";
 import { adminJobs } from ".";
 
-import { getItem } from "@/app/utils";
-export const revalidate = 3600;
-
 import axios, { AxiosResponse } from "axios";
 export default async function Page({ params }: { params: { id: string } }) {
   const data: AxiosResponse<{
@@ -15,9 +12,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   }> = await axios.post(`https://c2cjobs.org/api/v1/jobseeker/list-all-jobs`, {
     id: params.id,
   });
-
-  const time = await getItem(params.id);
-  console.log('data2',time);
   return (
     <Layout>
       {data.data.data?.adminJobs.map((job) => {
@@ -29,7 +23,6 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
         );
       })}
-      <h1>{time}</h1>
     </Layout>
   );
 }
