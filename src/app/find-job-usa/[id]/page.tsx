@@ -6,16 +6,16 @@ import { adminJobs } from ".";
 import axios, { AxiosResponse } from "axios";
 import Pagination from "@/components/Pagination";
 export default async function Page({ params }: { params: { id: string } }) {
-  const data: AxiosResponse<{
+  const response: AxiosResponse<{
     code: number;
     message: string;
     data: { adminJobs: adminJobs[] };
-  }> = await axios.post(`https://c2cjobs.org/api/v1/jobseeker/list-all-jobs`, {
+  }> = await axios.post(`http://localhost:8080/api/v1/jobseeker/list-all-jobs`, {
     id: params.id,
   });
   return (
     <Layout>
-      {data.data.data?.adminJobs.map((job) => {
+      {response.data.data?.adminJobs.map((job) => {
         return (
           <div key={job._id}>
             <Link href={`/job/${job.id}`} passHref>
@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
         );
       })}
-      <Pagination page={params.id}  />
+      <Pagination page={params.id} />
     </Layout>
   );
 }
