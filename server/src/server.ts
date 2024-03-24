@@ -12,7 +12,7 @@ app.use(
   })
 );
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
+app.get("/hello", (req: Request, res: Response, next: NextFunction) => {
   return res.status(200).json({
     success: true,
     message: "Hello World",
