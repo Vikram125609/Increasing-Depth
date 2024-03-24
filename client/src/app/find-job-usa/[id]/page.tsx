@@ -6,28 +6,30 @@ import { adminJobs, searchParams } from ".";
 import axios, { AxiosResponse } from "axios";
 import Pagination from "@/components/Pagination";
 import Filters from "@/components/Filters";
-import { domain_medha_ec2 } from "@/utils/API";
+import { serverless_url } from "@/utils/API";
+import { filterParams } from "@/../../../common/src/index";
 export default async function Page({
   params,
   searchParams,
 }: {
   params: { id: string };
   searchParams: searchParams;
-  }) {
+}) {
+  const payload: filterParams = {
+    id: params.id,
+    filterByJobTitle: searchParams.filterByJobTitle,
+    filterByJobSkills: searchParams.filterByJobSkills,
+    filterByVisa: searchParams.filterByVisa,
+    filterByJobLocation: searchParams.filterByJobLocation,
+    filterByJobDuration: searchParams.filterByJobDuration,
+  };
   const response: AxiosResponse<{
     code: number;
     message: string;
     data: { adminJobs: adminJobs[] };
   }> = await axios.post(
-    `https://${domain_medha_ec2}/api/v1/jobseeker/list-all-jobs`,
-    {
-      id: params.id,
-      filterByJobTitle: searchParams.filterByJobTitle,
-      filterByJobSkills: searchParams.filterByJobSkills,
-      filterByVisa: searchParams.filterByVisa,
-      filterByJobLocation: searchParams.filterByJobLocation,
-      filterByJobDuration: searchParams.filterByJobDuration,
-    }
+    `${serverless_url}/api/v1/jobseeker/list-all-jobs`,
+    payload
   );
   return (
     <Layout>

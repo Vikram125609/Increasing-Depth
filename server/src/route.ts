@@ -1,23 +1,26 @@
 import { NextFunction, Request, Response, Router } from "express";
 import axios, { AxiosResponse } from "axios";
 import { adminJobs } from "./index.d";
-import { z } from "zod";
+import { filterInput } from "../../common/src/index";
 const router = Router();
-const filter = z.object({
-  id: z.string(),
-});
 router.post(
   "/jobseeker/list-all-jobs",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const parsedInput = filter.safeParse(req.body);
-      const { filterByJobTitle, filterByJobSkills, filterByVisa, filterByJobLocation, filterByJobDuration } = req.body;
+      const parsedInput = filterInput.safeParse(req.body);
       if (!parsedInput.success) {
         return res
           .status(400)
           .json({ message: "Invalid Input", success: false });
       }
-      const id = parsedInput.data.id;
+      const {
+        id,
+        filterByJobTitle,
+        filterByJobSkills,
+        filterByVisa,
+        filterByJobLocation,
+        filterByJobDuration,
+      } = parsedInput.data;
       const data: AxiosResponse<{
         code: number;
         message: string;
