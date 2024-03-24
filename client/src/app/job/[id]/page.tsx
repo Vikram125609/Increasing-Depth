@@ -1,14 +1,15 @@
 import axios, { AxiosResponse } from "axios";
 import Layout from "./layout";
 import { job } from ".";
-import { serverless_url } from "@/utils/API";
+import { domain_bada_ec2 } from "@/utils/API";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const data: AxiosResponse<{
     code: number;
     message: string;
     data: { job_detail: job };
-  }> = await axios.get(`${serverless_url}/api/v1/general/job/${params.id}`, {
+  }> = await axios.get(`${domain_bada_ec2
+    }/api/v1/general/job/${params.id}`, {
     headers: {
       authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFjYmQwODc1MTY1NTQ1ZjVhMTgxYTkiLCJlbWFpbCI6InByZW1hbmFuZGppbWFoYXJqYUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQweC5nVGpKMGVCaDlVOGlxcWlEYWxPeENTUTJCUG8vOUc4LjZMR0FBRjkzTjRqNm5oeFZ3eSIsImlhdCI6MTcwNzE1MTA0Nn0.Nf0XR5Y8ZFrhfZpDjiSqX0igSxQZ3_JBsiw0dL1pZRQ`,
       role: "teamlead",
