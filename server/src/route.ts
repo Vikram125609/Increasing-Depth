@@ -2,15 +2,10 @@ import { NextFunction, Request, Response, Router } from "express";
 import axios, { AxiosResponse } from "axios";
 import { adminJobs } from "./index.d";
 import { z } from "zod";
-
-// import types
-
 const router = Router();
-
 const filter = z.object({
   id: z.string(),
 });
-
 router.post(
   "/jobseeker/list-all-jobs",
   async (req: Request, res: Response, next: NextFunction) => {
