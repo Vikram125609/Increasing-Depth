@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     code: number;
     message: string;
     data: { adminJobs: adminJobs[] };
-  }> = await axios.post(`http://${domain_bada_ec2}/api/v1/jobseeker/list-all-jobs`, {
+  }> = await axios.post(`https://${domain_bada_ec2}/api/v1/jobseeker/list-all-jobs`, {
     id: params.id,
   });
   return (
