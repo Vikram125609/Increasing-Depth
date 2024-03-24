@@ -1,5 +1,4 @@
-first_arg=$1
-second_arg=$2
+comment=$1
 git add .
-git commit -m "$first_arg";
-git push -u origin "$econd_arg";
+git commit -m "$comment";
+git push;
