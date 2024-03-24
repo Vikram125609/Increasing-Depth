@@ -7,12 +7,12 @@ router.post(
   "/jobseeker/list-all-jobs",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      // const parsedInput = filterInput.safeParse(req.body);
-      // if (!parsedInput.success) {
-      //   return res
-      //     .status(400)
-      //     .json({ message: "Invalid Input", success: false });
-      // }
+      const parsedInput = filterInput.safeParse(req.body);
+      if (!parsedInput.success) {
+        return res
+          .status(400)
+          .json({ message: "Invalid Input", success: false });
+      }
       const {
         id,
         filterByJobTitle,
@@ -20,7 +20,7 @@ router.post(
         filterByVisa,
         filterByJobLocation,
         filterByJobDuration,
-      } = req.body;
+      } = parsedInput.data;
       const data: AxiosResponse<{
         code: number;
         message: string;
