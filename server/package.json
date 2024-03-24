@@ -18,6 +18,7 @@
     "@types/node": "^20.11.25"
   },
   "dependencies": {
+    "@vikram125609/increasing-depth-common": "^1.0.3",
     "axios": "^1.6.8",
     "cors": "^2.8.5",
     "express": "^4.18.3",

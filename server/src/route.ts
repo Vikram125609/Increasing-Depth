@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import axios, { AxiosResponse } from "axios";
 import { adminJobs } from "./index.d";
-import { filterInput } from "../../common/src/index";
+import { filterInput } from "@vikram125609/increasing-depth-common";
 const router = Router();
 router.post(
   "/jobseeker/list-all-jobs",
