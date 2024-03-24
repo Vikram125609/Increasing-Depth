@@ -6,6 +6,7 @@ import { adminJobs, searchParams } from ".";
 import axios, { AxiosResponse } from "axios";
 import Pagination from "@/components/Pagination";
 import Filters from "@/components/Filters";
+import { domain_bada_ec2 } from "@/utils/API";
 export default async function Page({
   params,
   searchParams,
@@ -18,7 +19,7 @@ export default async function Page({
     message: string;
     data: { adminJobs: adminJobs[] };
   }> = await axios.post(
-    `http://localhost:8080/api/v1/jobseeker/list-all-jobs`,
+    `https://${domain_bada_ec2}/api/v1/jobseeker/list-all-jobs`,
     {
       id: params.id,
       filterByJobTitle: searchParams.filterByJobTitle,
