@@ -7,3 +7,11 @@ export interface adminJobs {
     createdAt: string
     updatedAt: string
 }
+
+export interface searchParams {
+    filterByJobTitle: string
+    filterByJobSkills: string
+    filterByVisa: string
+    filterByJobLocation: string
+    filterByJobDuration: string
+}
