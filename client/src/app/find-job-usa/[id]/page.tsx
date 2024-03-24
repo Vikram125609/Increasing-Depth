@@ -1,19 +1,33 @@
 import React from "react";
 import Link from "next/link";
 import Layout from "./layout";
-import { adminJobs } from ".";
+import { adminJobs, searchParams } from ".";
 
 import axios, { AxiosResponse } from "axios";
 import Pagination from "@/components/Pagination";
-import { domain_bada_ec2 } from "@/utils/API";
-export default async function Page({ params }: { params: { id: string } }) {
+import Filters from "@/components/Filters";
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: searchParams;
+  }) {
   const response: AxiosResponse<{
     code: number;
     message: string;
     data: { adminJobs: adminJobs[] };
-  }> = await axios.post(`https://${domain_bada_ec2}/api/v1/jobseeker/list-all-jobs`, {
-    id: params.id,
-  });
+  }> = await axios.post(
+    `http://localhost:8080/api/v1/jobseeker/list-all-jobs`,
+    {
+      id: params.id,
+      filterByJobTitle: searchParams.filterByJobTitle,
+      filterByJobSkills: searchParams.filterByJobSkills,
+      filterByVisa: searchParams.filterByVisa,
+      filterByJobLocation: searchParams.filterByJobLocation,
+      filterByJobDuration: searchParams.filterByJobDuration,
+    }
+  );
   return (
     <Layout>
       {response.data.data?.adminJobs.map((job) => {
@@ -25,6 +39,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
         );
       })}
+      <Filters />
       <Pagination page={params.id} />
     </Layout>
   );
