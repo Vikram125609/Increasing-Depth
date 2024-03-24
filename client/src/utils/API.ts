@@ -1,0 +1,1 @@
+export const domain = "35.154.100.185";

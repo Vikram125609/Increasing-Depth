@@ -5,12 +5,13 @@ import { adminJobs } from ".";
 
 import axios, { AxiosResponse } from "axios";
 import Pagination from "@/components/Pagination";
+import { domain } from "@/utils/API";
 export default async function Page({ params }: { params: { id: string } }) {
   const response: AxiosResponse<{
     code: number;
     message: string;
     data: { adminJobs: adminJobs[] };
-  }> = await axios.post(`http://localhost:8080/api/v1/jobseeker/list-all-jobs`, {
+  }> = await axios.post(`http://${domain}/api/v1/jobseeker/list-all-jobs`, {
     id: params.id,
   });
   return (
