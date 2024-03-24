@@ -18,11 +18,11 @@ export default async function Page({
 }) {
   const payload: filterParams = {
     id: params.id,
-    filterByJobTitle: searchParams.filterByJobTitle,
-    filterByJobSkills: searchParams.filterByJobSkills,
-    filterByVisa: searchParams.filterByVisa,
-    filterByJobLocation: searchParams.filterByJobLocation,
-    filterByJobDuration: searchParams.filterByJobDuration,
+    filterByJobTitle: searchParams.filterByJobTitle ? searchParams.filterByJobTitle : "",
+    filterByJobSkills: searchParams.filterByJobSkills ? searchParams.filterByJobSkills : "",
+    filterByVisa: searchParams.filterByVisa ? searchParams.filterByVisa : "",
+    filterByJobLocation: searchParams.filterByJobLocation ? searchParams.filterByJobLocation : "",
+    filterByJobDuration: searchParams.filterByJobDuration ? searchParams.filterByJobDuration : "",
   };
   const response: AxiosResponse<{
     code: number;
@@ -31,7 +31,7 @@ export default async function Page({
   }> = await axios.post(
     `${serverless_url}/api/v1/jobseeker/list-all-jobs`,
     payload
-  );
+    );
   return (
     <Layout>
       {response.data.data?.adminJobs.map((job) => {
