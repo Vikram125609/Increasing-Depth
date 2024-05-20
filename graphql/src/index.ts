@@ -1,10 +1,11 @@
+// PSDV https://sadhvi.devvani.com/8272068040
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 const typeDefs = `
   type Book {
     id: ID!
     title: String!
-    published_year: Int
+    published_year: Int!
   }
   type Author {
     id: ID!
@@ -15,24 +16,44 @@ const typeDefs = `
     authors: [Author]
   }`;
 
+const books = [
+  {
+    id: 1,
+    title: "Book1",
+    published_year: 1990,
+  },
+  {
+    id: 2,
+    title: "Book2",
+    published_year: 1990,
+  },
+  {
+    id: 3,
+    title: "Book3",
+    published_year: 1990,
+  }
+];
+
+const authors = [
+  {
+    id: 1,
+    name: "Author1",
+    books: [1, 2],
+  },
+  {
+    id: 2,
+    name: "Author2",
+    books: [3],
+  },
+];
+
 const resolvers = {
   Query: {
     books: () => {
-      return [
-        {
-          id: 1,
-          title: "The Awakening",
-          published_year: 1990,
-        },
-      ];
+      return books;
     },
     authors: () => {
-      return [
-        {
-          id: 1,
-          name: "Kate Chopin",
-        },
-      ];
+      return authors;
     },
   },
 };
