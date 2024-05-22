@@ -6,10 +6,12 @@ const typeDefs = `
     id: ID!
     title: String!
     published_year: Int!
+    author: Author
   }
   type Author {
     id: ID!
     name: String!
+    books: [Book]
   }
   type Query {
     books: [Book]
@@ -21,17 +23,26 @@ const books = [
     id: 1,
     title: "Book1",
     published_year: 1990,
+    authorid: 1,
   },
   {
     id: 2,
     title: "Book2",
     published_year: 1990,
+    authorid: 1,
   },
   {
     id: 3,
     title: "Book3",
     published_year: 1990,
-  }
+    authorid: 2,
+  },
+  {
+    id: 4,
+    title: "Book4",
+    published_year: 1990,
+    authorid: 2,
+  },
 ];
 
 const authors = [
@@ -43,11 +54,23 @@ const authors = [
   {
     id: 2,
     name: "Author2",
-    books: [3],
+    books: [3, 4],
   },
 ];
 
 const resolvers = {
+  Book: {
+    author: (parent: (typeof books)[0]) => {
+      return authors.find((author) => author.id === parent.authorid);
+    },
+  },
+  Author: {
+    books: (parent: (typeof authors)[0]) => {
+      return parent.books.map((id) => {
+        return books.find((book) => book.id === id);
+      });
+    },
+  },
   Query: {
     books: () => {
       return books;
