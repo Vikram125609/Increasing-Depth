@@ -16,6 +16,9 @@ const typeDefs = `
   type Query {
     books: [Book]
     authors: [Author]
+  }
+  type Mutation {
+    addBook(title: String!, published_year: Int!, authorid: ID!): Book
   }`;
 
 const books = [
@@ -77,6 +80,26 @@ const resolvers = {
     },
     authors: () => {
       return authors;
+    },
+  },
+  Mutation: {
+    addBook: (parent: any, args: any) => {
+      const authorid = parseInt(args.authorid);
+      authors.forEach((e) => {
+        if (e.id === authorid) {
+          e.books.push(books.length + 1);
+        }
+      });
+      const book = {
+        id: books.length + 1,
+        title: args.title,
+        published_year: args.published_year,
+        authorid: authorid,
+      };
+      books.push(book);
+      console.log(authors);
+      console.log(books);
+      return book;
     },
   },
 };
