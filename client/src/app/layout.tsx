@@ -18,7 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <RecoilContextProvider>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <nav className="mb-5">Navbaar</nav>
+          {children}
+          <footer className="mt-5">Footer</footer>
+        </body>
       </RecoilContextProvider>
     </html>
   );

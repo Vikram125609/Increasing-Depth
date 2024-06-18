@@ -33,7 +33,7 @@ export default async function Page({
     payload
     );
   return (
-    <Layout>
+    <Layout params={params}>
       {response.data.data?.adminJobs.map((job) => {
         return (
           <div key={job._id}>

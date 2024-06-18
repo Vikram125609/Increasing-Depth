@@ -15,6 +15,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       role: "teamlead",
     },
   });
+  console.log('hii')
   return (
     <Layout>
       <div>Job ID {data.data.data?.job_detail?.id}</div>

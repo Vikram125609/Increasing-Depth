@@ -6,7 +6,9 @@ export const metadata = {
   export default function Layout({ children }: { children: React.ReactNode }) {
     return (
       <div>
+        <h1 className="mb-5">React Concepts Starts</h1>
         {children}
+        <h1 className="mt-5">React Concepts Ends</h1>
       </div>
     );
   }
