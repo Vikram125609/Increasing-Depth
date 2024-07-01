@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Sockets</title>
+  </head>
+  <body>
+    <h1>This is a tutorial on Web Sockets</h1>
+  </body>
+  <script>
+    const socket = new WebSocket("ws://localhost:3000");
+    socket.onopen = () => {
+      console.log("Connection established");
+    };
+    socket.onmessage = (event) => {
+      console.log(event.data);
+    };
+    socket.onclose = () => {
+      console.log("Connection closed");
+    };
+  </script>
+</html>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Sockets</title>
+  </head>
+  <body>
+    <h1>This is a tutorial on Web Sockets</h1>
+  </body>
+  <script>
+    const customEventTarget = new EventTarget();
+    const socket = new WebSocket("ws://localhost:3000");
+    socket.onopen = () => {
+      console.log("Connection established");
+    };
+    socket.onmessage = (event) => {
+      console.log(event.data);
+      const customEvent = new CustomEvent("message_received", {
+        detail: event.data,
+      });
+      customEventTarget.dispatchEvent(customEvent);
+    };
+    socket.onclose = () => {
+      console.log("Connection closed");
+    };
+  </script>
+</html> -->

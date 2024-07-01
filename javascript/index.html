@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    #grandparent, #parent, #child {
+      border: 1px solid black;
+      min-width: 100px;
+      padding: 30px;
+    }
+  </style>
   <body>
-    <input
-      type="text"
-      name="input"
-      id="search"
-      onkeyup="betterFunction('Pyari Radha', 'Nyari Radha', this.value)"
-    />
-    Jaha Shree Radha Waha Nahi Koi Badha
+    <div id="grandparent">
+      <div id="parent">
+        <div id="child">
+        </div>
+      </div>
+    </div>
   </body>
-  <!-- <script src="./debouncing.js"></script> -->
-  <!-- <script src="./currying.js"></script> -->
-  <script src="./inheritance.js"></script>
+  <script src="./event-capturing-bubling.js"></script>
 </html>

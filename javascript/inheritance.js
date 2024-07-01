@@ -4,12 +4,20 @@ const Praneshveri = {
     preetam: "Man Mohan",
     bhav: "Sahachari",
     getSakhiya: function () {
+        console.log(this);
         return ["Lalita", "Vishakha", "Chitra", "Sudevi", "Rangdevi", "Champaklata", "Indulekha", "Tungvidya"]
     }
 }
 
-// console.log(Praneshveri.getSakhiya());
-// Here we didn't define the method toString but we are able to access because of Prototype 
-// console.log(Praneshveri.toString());
+function fun() {
+    return this.getSakhiya();
+}
 
-console.log(Praneshveri.__proto__);
+console.log(fun.call(Praneshveri))
+
+console.log(Praneshveri.__proto__)
+
+const Sahachariya = ['Lalita', 'Vishakha', 'Chitra', 'Sudevi', 'Rangdevi', 'Champaklata', 'Indulekha', 'Tungvidya']
+console.log(Sahachariya.__proto__)
+console.log(Sahachariya.__proto__.__proto__)
+console.log(Sahachariya.__proto__.__proto__.__proto__)
