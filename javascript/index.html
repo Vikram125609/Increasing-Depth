@@ -6,19 +6,31 @@
     <title>Document</title>
   </head>
   <style>
-    #grandparent, #parent, #child {
+    li {
+      margin: 10px;
+      padding: 10px;
       border: 1px solid black;
-      min-width: 100px;
-      padding: 30px;
+      cursor: pointer;
     }
   </style>
   <body>
-    <div id="grandparent">
-      <div id="parent">
-        <div id="child">
-        </div>
-      </div>
+    <div id="feed" style="padding: 10%; border: 1px solid black">
+      <ul id="post">
+        <li id="Lalita" url="/lalita-sakhi">Lalita</li>
+        <li id="Visakha" url="/visakha-sakhi">Visakha</li>
+        <li id="Chitra" url="/chitra-sakhi">Chitra</li>
+        <li id="Sudevi" url="/sudevi-sakhi">Sudevi</li>
+        <li id="Rangdevi" url="/rangdevi-sakhi">Rangdevi</li>
+        <li id="Champaklata" url="/champaklata-sakhi">Champaklata</li>
+        <li id="Indulekha" url="/indulekha-sakhi">Indulekha</li>
+        <li id="Tungvidya" url="/tungvidya-sakhi">Tungvidya</li>
+      </ul>
+    </div>
+    <div id="form">
+      <input type="text" id="name" data-uppercase />
+      <input type="text" id="pan" />
+      <input type="text" id="mobile" />
     </div>
   </body>
-  <script src="./event-capturing-bubling.js"></script>
+  <script src="./event-delegation.js"></script>
 </html>
